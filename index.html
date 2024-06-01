@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock Using JavaScript - Sanjiv Jaiswal</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    #clock {
+        font-size: 4rem;
+        font-weight: bold;
+    }
+</style>
+
+<body>
+
+    <h2 id="clock"></h2>
+
+</body>
+
+<script>
+
+    const clockText = document.getElementById('clock')
+
+    function getTime() {
+        let newTime = new Date()
+        let hour = newTime.getHours();
+        let minutes = newTime.getMinutes();
+        let seconds = newTime.getSeconds();
+
+        // clockText.innerHTML = hour + ' : ' + minutes + ' : ' + seconds 
+        clockText.innerHTML = `${hour>12? hour%12: hour} : ${minutes<10? ('0'+minutes): minutes} : ${seconds<10? '0'+seconds: seconds} ${hour>12? 'PM': 'AM'}`
+    }
+
+    const clockInterval = setInterval(() => {
+        getTime()
+    }, 1000);
+
+    // setTimeout(() => {
+    //     clearInterval(clockInterval)
+    // }, 60000);      // pauses the clock automatically after 1 minute
+
+</script>
+
+</html>
